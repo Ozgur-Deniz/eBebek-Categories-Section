@@ -1,0 +1,48 @@
+<div class="bg-white w-[1350px] shadow-xl p-6">
+  <div class="flex flex-row items-center justify-center gap-0 rounded-xl p-6">
+    <div
+      class="flex flex-col items-start justify-center gap-0 w-[300px] bg-[#ebf6fc]"
+    >
+      <div
+        class="flex flex-row items-center justify-start gap-8 cursor-pointer p-4 min-w-[225px]"
+        *ngFor="let category of categories"
+        (mouseenter)="hoveredCategory = category"
+        [ngClass]="{
+          'rounded-l-lg': hoveredCategory === category,
+          'bg-white': hoveredCategory !== category
+        }"
+      >
+        <i class="{{ category.icon }} fa-xl text-[#dbd8d8] min-w-[30px]"></i>
+        <p class="text-[#686868] text-[1rem]">{{ category.name }}</p>
+      </div>
+    </div>
+    <div
+      class="flex flex-row items-center justify-center gap-4 w-[900px] bg-[#ebf6fc] p-[40px]"
+    >
+      <div class="flex flex-wrap gap-4 w-[800px]" *ngIf="hoveredCategory">
+        <div
+          class="flex flex-col items-start justify-center gap-3 w-[150px]"
+          *ngFor="let prop of hoveredCategory.properties"
+        >
+          <h4 class="text-[#686868]">{{ prop.subName }}</h4>
+          <div>
+            <p class="text-[#b4b2b2]" *ngFor="let sub of prop.subCategories">
+              {{ sub }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col items-center justify-center gap-4 rounded-full w-[100px] h-[368px] bg-[#fff]"
+        *ngIf="hoveredCategory.photos"
+      >
+        <img
+          class="w-[66px] h-[66px]"
+          *ngFor="let src of hoveredCategory.photos"
+          [src]="src"
+          alt="brand-photo"
+        />
+      </div>
+    </div>
+  </div>
+</div>

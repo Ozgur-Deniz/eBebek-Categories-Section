@@ -34,5 +34,19 @@
       </div>
     </div>
   </div>
-  <app-header-tags class="w-[%100]"></app-header-tags>
+  <div class="w-[89%]">
+    <app-header-tags
+      class="w-[%100]"
+      (tagHovered)="onTagHover($event)"
+      (tagLeft)="onTagLeave()"
+    ></app-header-tags>
+  </div>
+  <div
+    *ngIf="showCategoryMenu"
+    @fadeSlide
+    (mouseenter)="onPanelEnter()"
+    (mouseleave)="onPanelLeave()"
+  >
+    <app-catergories></app-catergories>
+  </div>
 </div>

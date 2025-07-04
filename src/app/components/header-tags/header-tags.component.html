@@ -1,10 +1,23 @@
-<div class="flex flex-row items-center justify-between gap-10 w-full mt-5">
+<div
+  class="flex flex-row items-center justify-between gap-10 w-full mt-5 pb-4 border-b border-[#eeecec]"
+>
   <div class="flex flex-row items-center justify-center gap-8">
     <div
-      class="flex flex-row items-center justify-center gap-2 text-[#686868] font-bold text-lg"
+      class="flex flex-row items-center justify-center gap-2 text-[#686868] font-bold text-lg cursor-pointer"
+      (mouseenter)="isHovered = true; tagHovered.emit('kategoriler')"
+      (mouseleave)="isHovered = false; tagLeft.emit()"
     >
-      <p>Kategoriler</p>
-      <i class="fa-solid fa-angle-down pt-[5px]"></i>
+      <p [ngClass]="isHovered ? 'text-[#0091d5]' : 'text-[#686868]'">
+        Kategoriler
+      </p>
+      <i
+        class="fa-solid fa-angle-down pt-[5px]"
+        [ngClass]="
+          isHovered
+            ? 'fa-angle-up text-[#0091d5]'
+            : 'fa-angle-down text-[#686868]'
+        "
+      ></i>
     </div>
     <div
       class="flex flex-row items-center justify-center gap-2 text-[#686868] font-bold text-lg"
